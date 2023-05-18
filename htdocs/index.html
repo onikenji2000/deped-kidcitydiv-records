@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		
+		<title>RECORDS DATA SITE</title>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/bootstrap-tagsinput.css" rel="stylesheet">
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- Content Head/////////////////////////////////////////////////////////////////////////////////////////////-->
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="./" id="get_home">Kidapawan Document Inventory System</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<form class="navbar-form navbar-right" id="search_comm_Form">
+							<div class="form-group" >
+							  <input type="text" class="form-control input-sm" id="search_db" name="search_db" placeholder="Search">
+							</div>
+							<button type="submit" class="btn btn-primary btn-sm" id="search_comm" name="search_comm">Search</button>
+						</form>
+						
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" a href="#" data-toggle="modal" data-target="#generate_code_Modal" name="generate_code">Generate Code</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" a href="#" data-toggle="modal" data-target="#print_comm_Modal" name="print_comm">Print</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- Content Body///////////////////////////////////////////////////////////////////////////////////////////// -->
+			<div class="container-fluid maincontent" style="padding-top:60px;">
+				<div class="well well-sm cartel inlineme" id="barView">
+					<div class="inlineme" id="initBarcodeForm">
+						<form name="BarcodeScannerForm" id="barcodeForm">
+							<div class="row">
+								<div class="col-sm-16">
+									<div class="form-group">
+										<label>Document Code:</label>
+										<input type="text" class="form-control" placeholder="Barcode" id="mainBarcode" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+										<button type="submit" class="btn btn-warning" id="opener">CHECK</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="hidablepanel" style="display:none;" class="inlineme uncenterme">
+						<img src="./images/giphy.gif" width="150px"/>
+					</div>
+				</div>
+				<div class="well well-sm uncenterme" id="updaterdiv" style="display:none;">
+				</div>
+			</div>
+		</div>
+		<!--                                                Code Generator Modal                                         -->
+		<div class="container">
+			<div class="modal fade" id="generate_code_Modal" role="dialog">
+				<div class="modal-dialog modal-md"  >
+				   <div class="modal-content">
+					   <div class="modal-header"><h4 id="uphead" class="modal-title">Generate document code</h4></div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<div style="text-align:center;">
+										<img id="barcode1" />
+									</div>                                  
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="usr">Date:</label>
+										<input type="date" class="form-control input-sm datePicker" id="code_date" name="code_date" required>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="codesel1">Document type:</label>
+										<select class="form-control input-sm" id="code_type" name="code_type" required>
+											<option value="01">Division Memo</option>
+											<option value="02">Division Advisory</option>
+											<option value="03">Office Memo</option>
+											<option value="04"> Deped Order</option>
+											<option value="05">Deped Memo</option>
+											<option value="06">Deped Advisory</option>
+											<option value="07">Regional Memo</option>
+											<option value="08">Regional Advisory</option>
+											<option value="09">Communications</option>
+											<option value="10">Report</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="usr">Document No:</label>
+										<input type="text" class="form-control input-sm" id="code_num" name="code_num" disabled>
+									</div>
+								</div>  
+								
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="codesel2">Prepared by:</label>
+										<select class="form-control input-sm" id="code_prepared" name="code_prepared" required>
+											<option value="001">Division Office</option>
+											<option value="002">School</option>
+											<option value="003">Other Agencies</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="modal-footer">
+								<input type="button" name="print_code" id="print_code" value="Print Document Code" class="btn btn-primary btn-md" onclick="printCode()"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--                                                                       -->
+	</body>
+</html>
+
+<!-- Script Lib -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/JsBarcode.all.min.js"></script>
+<script src="js/event.js" type="text/javascript"></script>
+<script src="js/bootstrap-tagsinput.js"></script>
+<script src="js/qrcode.min.js"></script>
