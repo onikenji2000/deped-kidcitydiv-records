@@ -24,6 +24,7 @@ if(strcmp($file, '') != 0) {
 	move_uploaded_file($file, $file_dir);
 	/////////////////////////////////////
 
+	////////////////////Save the data to Database
 	$save = $sql->exec("INSERT INTO doc_file(doc_code, file_name, file_type) VALUES('" . $doc_code . "', '" . $file_dir . "', '" . $file_type . "')");
 	echo $save;
 }
